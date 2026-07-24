@@ -1,0 +1,6 @@
+# Q3: Employee record file processor using raw syscalls (open/read/write/lseek/close)
+
+gcc -Wall -o emp_records emp_records.c
+./emp_records
+ls -la employees.dat
+xxd employees.dat | head -5

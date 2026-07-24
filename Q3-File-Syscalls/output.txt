@@ -1,0 +1,21 @@
+[Step 1] Creating 'employees.dat' and writing 5 employee records...
+[Step 1] Done. Record size = 60 bytes, file size = 300 bytes.
+
+[Step 2] Reading all records BEFORE update:
+  Record 0 -> ID: 101 | Name: Ravi Kumar           | Salary: 45000.00
+  Record 1 -> ID: 102 | Name: Priya Singh          | Salary: 52000.00
+  Record 2 -> ID: 103 | Name: Kiran Rao            | Salary: 38000.00
+  Record 3 -> ID: 104 | Name: Anjali Mehta         | Salary: 61000.00
+  Record 4 -> ID: 105 | Name: Suresh Nair          | Salary: 47000.00
+
+[Step 3] Updated record 2 (emp_id 103) salary -> 55000.00 (only 60 bytes touched, not the whole file)
+
+[Step 4] Direct lookup of record 4 (jumped straight there, no prior records read):
+  Record 4 -> ID: 105 | Name: Suresh Nair          | Salary: 47000.00
+
+[Step 5] Reading all records AFTER update (only record 2 should differ):
+  Record 0 -> ID: 101 | Name: Ravi Kumar           | Salary: 45000.00
+  Record 1 -> ID: 102 | Name: Priya Singh          | Salary: 52000.00
+  Record 2 -> ID: 103 | Name: Kiran Rao            | Salary: 55000.00
+  Record 3 -> ID: 104 | Name: Anjali Mehta         | Salary: 61000.00
+  Record 4 -> ID: 105 | Name: Suresh Nair          | Salary: 47000.00
