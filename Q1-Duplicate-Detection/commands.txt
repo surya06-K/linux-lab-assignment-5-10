@@ -1,0 +1,19 @@
+# Q1: Duplicate Submission Detection & Backup
+
+mkdir submissions
+echo "Assignment answer by Ravi - Module 5" > submissions/ravi_module5.txt
+echo "Assignment answer by Ravi - Module 5" > submissions/ravi_copy.txt
+echo "Assignment answer by Priya - Module 5" > submissions/priya_module5.txt
+echo "Assignment answer by Kiran - Module 5" > submissions/kiran_module5.txt
+echo "Assignment answer by Priya - Module 5" > submissions/priya_resubmit.txt
+echo "secret data" > submissions/locked_file.txt
+chmod 000 submissions/locked_file.txt
+ls -la submissions/
+
+./duplicate_check.sh submissions backup
+
+cat report.txt
+cat duplicates.log
+cat errors.txt
+cat hashes.txt
+ls backup/

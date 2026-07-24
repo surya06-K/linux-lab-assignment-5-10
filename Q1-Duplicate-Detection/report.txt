@@ -1,0 +1,7 @@
+==== Submission Processing Report ====
+Run date        : Fri Jul 24 14:31:38 IST 2026
+Source folder   : submissions
+Backup folder   : backup
+Total files processed : 6
+Duplicate files found : 2
+Unique files backed up: 3

@@ -1,0 +1,2 @@
+shasum: submissions/locked_file.txt: Permission denied
+Error: Could not read/hash 'submissions/locked_file.txt' (permission or I/O issue)

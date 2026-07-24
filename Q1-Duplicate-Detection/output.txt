@@ -1,0 +1,20 @@
+==== Submission Processing Report ====
+Run date        : Fri Jul 24 14:31:38 IST 2026
+Source folder   : submissions
+Backup folder   : backup
+Total files processed : 6
+Duplicate files found : 2
+Unique files backed up: 3
+
+=== duplicates.log ===
+Duplicate: submissions/priya_resubmit.txt (same content already backed up)
+Duplicate: submissions/ravi_module5.txt (same content already backed up)
+
+=== errors.txt ===
+shasum: submissions/locked_file.txt: Permission denied
+Error: Could not read/hash 'submissions/locked_file.txt' (permission or I/O issue)
+
+=== backup/ contents ===
+kiran_module5.txt
+priya_module5.txt
+ravi_copy.txt
