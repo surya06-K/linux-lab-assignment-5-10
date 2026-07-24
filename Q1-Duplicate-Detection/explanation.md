@@ -49,3 +49,7 @@ used to detect duplicates.
   against directories/special files being processed; `$?`/`if cp ...; then`
   checks the exit status of `cp` before incrementing the backed-up counter,
   so a failed copy is not miscounted as a successful backup.
+
+**Note:** `locked_file.txt` permissions were restored to 644 after the script
+run (only to allow git to track/commit the file) — the permission-denied
+error in errors.txt was captured live during the actual run.
