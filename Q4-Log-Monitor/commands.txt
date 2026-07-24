@@ -1,0 +1,18 @@
+# Q4: Real-time log monitor (tail -f, tee, grep, process substitution, /dev/null)
+
+# Tab A: start the monitor
+./log_monitor.sh server.log
+
+# Tab B: simulate log activity while Tab A is watching
+echo "INFO Server started" >> server.log
+echo "INFO User login: surya" >> server.log
+echo "ERROR Database connection failed" >> server.log
+echo "INFO Request processed" >> server.log
+echo "ERROR Disk write timeout" >> server.log
+echo "INFO Cache refreshed" >> server.log
+
+# Tab A: stop monitoring
+Ctrl+C
+
+# Tab A: verify the separate report file
+cat error_report.txt

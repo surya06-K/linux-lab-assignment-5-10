@@ -1,0 +1,14 @@
+Monitoring 'server.log' in real time. ERROR lines are also appended to 'error_report.txt'.
+Press Ctrl+C to stop.
+----------------------------------------------------------
+INFO Server started
+INFO User login: surya
+ERROR Database connection failed
+INFO Request processed
+ERROR Disk write timeout
+INFO Cache refreshed
+^C
+
+=== error_report.txt (after Ctrl+C) ===
+ERROR Database connection failed
+ERROR Disk write timeout
