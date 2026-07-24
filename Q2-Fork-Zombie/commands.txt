@@ -1,0 +1,9 @@
+# Q2: fork() child process monitor with zombie prevention and signal-based termination
+
+gcc -Wall -o monitor monitor.c
+
+./monitor
+
+./monitor > output.txt 2>&1
+cat output.txt
+ps aux | grep -i defunct | grep -v grep

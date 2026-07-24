@@ -1,0 +1,11 @@
+[Parent 3659] Launching 4 worker children
+[Child 0] PID 3660: handling request, expect 1s
+[Child 1] PID 3661: handling request, expect 2s
+[Child 2] PID 3662: handling request, expect 3s
+[Child 3] PID 3663: simulating an UNRESPONSIVE request
+[Child 0] PID 3660: request completed normally
+[Child 1] PID 3661: request completed normally
+[Child 2] PID 3662: request completed normally
+[Parent] PID 3663 exceeded 3s -> sending SIGTERM
+[Parent] PID 3663 unresponsive to SIGTERM -> sending SIGKILL
+[Parent] All children accounted for. Reaped via SIGCHLD: 4/4
