@@ -1,0 +1,60 @@
+=== Swap file crash recovery ===
+
+Before crash, nginx.conf on disk:
+server {
+    listen 80;
+    server_name example.com;
+}
+
+After kill -9 on the vim process (simulated crash):
+$ ls -la
+.nginx.conf.swp   <- left behind, 12288 bytes
+nginx.conf        <- unchanged, 55 bytes (original content only)
+
+$ cat nginx.conf
+server {
+    listen 80;
+    server_name example.com;
+}
+(proxy_pass line is missing -- it was never saved before the crash)
+
+Reopening with vim nginx.conf triggered:
+E325: ATTENTION
+Found a swap file by the name ".nginx.conf.swp"
+...
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r nginx.conf"
+Swap file ".nginx.conf.swp" already exists!
+[O]pen Read-Only, (E)dit anyway, (R)ecover, (D)elete it, (Q)uit, (A)bort:
+
+Pressed R:
+Using swap file ".nginx.conf.swp"
+Original file "~/linux-lab-assignment/Q5-Vi-Recovery/nginx.conf"
+Recovery completed. You should check if everything is OK.
+
+Buffer after recovery:
+server {
+    listen 80;
+    server_name example.com;
+}
+proxy_pass http://backend_pool;
+
+After :w, :q, rm .nginx.conf.swp:
+$ cat nginx.conf
+server {
+    listen 80;
+    server_name example.com;
+}
+proxy_pass http://backend_pool;
+(edit permanently recovered and saved)
+
+=== Backup file (~) mechanism ===
+
+$ ls -la sample.conf*
+sample.conf    44 bytes  (server { listen 80; } / new_line_1 / new_line_2)
+sample.conf~   33 bytes  (server { listen 80; } / new_line_1)
+
+$ cat sample.conf~
+server { listen 80; }
+new_line_1
+(new_line_2 is missing -- backup only captures the state before the LAST save)

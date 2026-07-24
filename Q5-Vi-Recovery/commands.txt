@@ -1,0 +1,48 @@
+# Q5: vi/vim crash recovery mechanisms
+
+# --- Part 1: Swap file crash recovery ---
+cat > nginx.conf << 'CONF'
+server {
+    listen 80;
+    server_name example.com;
+}
+CONF
+
+vim nginx.conf
+# (inside vim: jump to end, add "    proxy_pass http://backend_pool;", Esc)
+# (do NOT save -- leave it unsaved)
+
+# In a second terminal tab:
+ps aux | grep vim
+kill -9 <PID>          # simulates a genuine crash, not a clean quit
+
+ls -la                  # shows .nginx.conf.swp left behind
+cat nginx.conf           # shows original 4 lines only -- edit was lost from disk
+
+vim nginx.conf
+# vim shows "E325: ATTENTION -- Found a swap file" warning
+# press R to recover
+# (buffer now shows the proxy_pass line, restored from the swap file)
+:w
+:q
+
+rm .nginx.conf.swp
+cat nginx.conf           # now permanently has the recovered line
+
+# --- Part 2: Backup file (~) mechanism, for comparison ---
+echo "server { listen 80; }" > sample.conf
+vim sample.conf
+:set backup
+Go
+new_line_1
+<Esc>
+:w
+Go
+new_line_2
+<Esc>
+:w
+:q
+
+ls -la sample.conf*
+cat sample.conf
+cat sample.conf~

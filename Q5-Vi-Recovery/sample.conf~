@@ -1,0 +1,2 @@
+server { listen 80; }
+new_line_1
